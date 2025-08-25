@@ -20,13 +20,13 @@ body {
 
 .nav-links li a {
     text-decoration: none;
-    color: white;
+    color: rgb(230, 12, 12);
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
-    color: #f69713;
+    color: #c90303;
 }
 
 /* Hamburger menu styles */
