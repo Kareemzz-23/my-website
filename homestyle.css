@@ -20,7 +20,7 @@ body {
 
 .nav-links li a {
     text-decoration: none;
-    color: rgb(230, 12, 12);
+    color: rgb(255, 249, 249);
     font-weight: 600;
     transition: color 0.3s ease;
 }
@@ -68,7 +68,7 @@ html, body {
 }
 
 body {
-    background-image: url('/workspaces/my-website/WhatsApp Image 2025-08-25 at 00.06.16_d7c4a0e4.jpg');
+    background-image: url('https://i.postimg.cc/fWxzGGXD/Whats-App-Image-2025-08-25-at-00-06-16-d7c4a0e4.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -80,4 +80,10 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1; /* Ensure the image is in front of other content */
+}
+
+.content-section {
+    margin: 20px; 
+    padding: 15px; 
+    border: 0px #dddddd00; 
 }
