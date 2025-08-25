@@ -173,7 +173,26 @@ body {
     }
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    background-image: url('https://i.imgur.com/OReBMUi_d.webp?maxwidth=1520&fidelity=grand');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.center-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure the image is in front of other content */
+}
 
 
 /* Content Section */
