@@ -98,16 +98,17 @@ body {
         padding: 10px; /* Adjust padding for smaller screens */
     }
 }
-html, body {
+@media html, body {
     height: 100%;
     margin: 10px;
     padding: 10px;
     font-family: Arial, sans-serif;
     color: rgb(255, 249, 249);
 }
-body {
+@media body {
     background-image: url('https://i.postimg.cc/5y3qTPb1/por.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    
 }
