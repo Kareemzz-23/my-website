@@ -91,3 +91,23 @@ body {
     border: 0px #dddddd00; 
     color: rgb(255, 249, 249);
 }
+
+@media (max-width: 600px) {
+    .content-section {
+        font-size: 14px; /* Adjust font size for smaller screens */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
+html, body {
+    height: 100%;
+    margin: 10px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    color: rgb(255, 249, 249);
+}
+body {
+    background-image: url('https://i.postimg.cc/5y3qTPb1/por.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
