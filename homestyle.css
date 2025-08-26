@@ -47,10 +47,11 @@ body {
 /* Media query for mobile devices */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        display: grid;
         flex-direction: column;
         width: 100%;
-        text-align: center;
+        text-align: right;
+
     }
 
     .nav-links.active {
@@ -95,8 +96,8 @@ body {
 @media (max-width: 768px) {
     body {
         background-image: url('https://i.postimg.cc/5y3qTPb1/por.jpg');
-        background-size: cover; /* or 'contain' if you want the whole image visible */
+        background-size: cover ; /* or 'contain' if you want the whole image visible */
         background-position: center top; /* adjust as needed */
-        /* You can also use background-repeat or other properties */
+        
     }
 }
