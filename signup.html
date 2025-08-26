@@ -1,24 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arachnophilia</title>
-    <link rel="stylesheet" href="homestyle.css">
-</head>
-    <body>
-    <nav class="navigation">
-        <div class="hamburger-menu" id="hamburger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="signin.html">sign in</a></li>
-        </ul>
-    </nav>
-    <script src="scriptnav.js"></script>
+<!-- ...existing code... -->
+<form action="action_page.php" style="border:1px solid #ccc" enctype="multipart/form-data">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>give me some of your stupid details, wtf am I gonna do with them, I'm not the government</p>
+    <hr>
 
+    <label for="email"><b>Your stupid email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" id="email" required>
+
+    <label for="alias"><b>Alias</b></label>
+    <input type="text" placeholder="Make one up" name="alias" id="alias" required>
+
+    <label for="profilePic"><b>Profile Picture</b></label>
+    <input type="file" id="profilePic" name="profilePic" accept="image/*">
+    <img id="preview" src="#" alt="Profile Preview" style="display:none; width:100px; height:100px; border-radius:50%; margin-top:10px;">
+
+    <label for="psw"><b>Your stupid password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+    <label for="psw-repeat"><b>Repeat the ting</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+
+    <p>By creating an account you agree to <a href="#" style="color:dodgerblue">sell me your soul</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+<script>
+document.getElementById('profilePic').onchange = function (evt) {
+    const [file] = this.files;
+    if (file) {
+        const preview = document.getElementById('preview');
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = 'block';
+    }
+};
+</script>
 </body>
-
+</html>
