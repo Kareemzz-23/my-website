@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="homestyle.css">
+</head>
+<body>
+  <form id="loginForm">
+    <div class="container">
+      <h1>Login</h1>
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" id="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+      <button type="submit">Login</button>
+    </div>
+  </form>
+  <div id="loginResult"></div>
+  <script>
+    document.getElementById('loginForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const psw = document.getElementById('psw').value;
+      const res = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, psw })
+      });
+      const data = await res.json();
+      const resultDiv = document.getElementById('loginResult');
+      if (res.ok) {
+        resultDiv.innerHTML = `<p style="color:green;">${data.message}</p>
+          <p>Welcome, ${data.user.alias}!</p>
+          <img src="http://localhost:3000${data.user.profilePic}" style="width:100px;border-radius:50%;">`;
+      } else {
+        resultDiv.innerHTML = `<p style="color:red;">${data.message}</p>`;
+      }
+    };
+  </script>
+</body>
+</html>
