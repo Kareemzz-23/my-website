@@ -62,16 +62,26 @@ document.getElementById('signupForm').onsubmit = async function(e) {
         return;
     }
 
-    const res = await fetch('http://localhost:3000/signup', {
-        method: 'POST',
-        body: formData
-    });
-    const data = await res.json();
-    if (res.ok) {
-        // Redirect to login.html
-        window.location.href = 'login.html';
-    } else {
-        document.getElementById('signupResult').innerHTML = `<p style="color:red;">${data.message}</p>`;
+    try {
+        const res = await fetch('http://localhost:3000/signup', {
+            method: 'POST',
+            body: formData
+        });
+        let data;
+        const contentType = res.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            data = await res.json();
+        } else {
+            const text = await res.text();
+            throw new Error('Server did not return JSON: ' + text);
+        }
+        if (res.ok) {
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('signupResult').innerHTML = `<p style="color:red;">${data.message}</p>`;
+        }
+    } catch (err) {
+        document.getElementById('signupResult').innerHTML = `<p style="color:red;">${err.message}</p>`;
     }
 };
 </script>
