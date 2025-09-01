@@ -21,25 +21,26 @@
   </form>
   <div id="loginResult"></div>
   <script>
-    document.getElementById('loginForm').onsubmit = async function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const psw = document.getElementById('psw').value;
-      const res = await fetch('https://fantastic-space-fishstick-r467wxg7qgjpcw5vx-3000.app.github.dev/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, psw })
-      });
-      const data = await res.json();
-      const resultDiv = document.getElementById('loginResult');
-      if (res.ok) {
-        resultDiv.innerHTML = `<p style="color:green;">${data.message}</p>
-          <p>Welcome, ${data.user.alias}!</p>
-          <img src="https://fantastic-space-fishstick-r467wxg7qgjpcw5vx-3000.app.github.dev/${data.user.profilePic}" style="width:100px;border-radius:50%;">`;
-      } else {
-        resultDiv.innerHTML = `<p style="color:red;">${data.message}</p>`;
-      }
-    };
+   document.getElementById('loginForm').onsubmit = async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const psw = document.getElementById('psw').value;
+  const res = await fetch('https://fantastic-space-fishstick-r467wxg7qgjpcw5vx-3000.app.github.dev/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, psw })
+  });
+  const data = await res.json();
+  if (res.ok) {
+    // Optionally store user info for later use
+    localStorage.setItem('alias', data.user.alias);
+    localStorage.setItem('profilePic', data.user.profilePic);
+    // Redirect to feed
+    window.location.href = 'feed.html';
+  } else {
+    document.getElementById('loginResult').innerHTML = `<p style="color:red;">${data.message}</p>`;
+  }
+};
   </script>
 </body>
 </html>
