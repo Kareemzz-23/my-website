@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create a Post</title>
+  <link rel="stylesheet" href="homestyle.css">
+  <style>
+    body {
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    .blog-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+    }
+    .blog-container h2 {
+      margin-top: 0;
+      font-size: 2em;
+      color: #222;
+    }
+    .blog-container textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+    .blog-container button {
+      background: #c90303;
+      color: #fff;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .blog-container button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+    .blog-container .error {
+      color: #c90303;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="blog-container">
+    <h2>Create a Post</h2>
+    <form id="postForm">
+      <div class="error" id="errorMsg"></div>
+      <textarea id="postContent" name="content" placeholder="Write something interesting..." required></textarea>
+      <button type="submit">Post</button>
+    </form>
+  </div>
+  <script>
+   document.getElementById('postForm').onsubmit = async function(e) {
+  e.preventDefault();
+  const content = document.getElementById('postContent').value.trim();
+  const errorMsg = document.getElementById('errorMsg');
+  if (content.length < 20) {
+    errorMsg.textContent = "Post must be at least 20 characters.";
+    return;
+  }
+  // Example: Replace with actual user info if available
+  const author = localStorage.getItem('alias') || 'Anonymous';
+  const profilePic = localStorage.getItem('profilePic') || '';
+
+  const res = await fetch('https://fantastic-space-fishstick-r467wxg7qgjpcw5vx-3000.app.github.dev/post', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content, author, profilePic })
+  });
+  if (res.ok) {
+    window.location.href = "feed.html";
+  } else {
+    const data = await res.json();
+    errorMsg.textContent = data.message || "Failed to post.";
+  }
+};
+  </script>
+</body>

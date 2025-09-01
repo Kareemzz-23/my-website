@@ -64,3 +64,37 @@ app.post('/login', (req, res) => {
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });
+
+const POSTS_FILE = path.join(__dirname, 'posts.json');
+
+// Helper functions for posts
+function readPosts() {
+  if (!fs.existsSync(POSTS_FILE)) return [];
+  return JSON.parse(fs.readFileSync(POSTS_FILE));
+}
+function writePosts(posts) {
+  fs.writeFileSync(POSTS_FILE, JSON.stringify(posts, null, 2));
+}
+
+// Save a new post
+app.post('/post', express.json(), (req, res) => {
+  const { content, author, profilePic } = req.body;
+  if (!content || content.length < 20) {
+    return res.status(400).json({ message: 'Post must be at least 20 characters.' });
+  }
+  const posts = readPosts();
+  posts.push({
+    content,
+    author,
+    profilePic,
+    timestamp: Date.now()
+  });
+  writePosts(posts);
+  res.json({ message: 'Post saved!' });
+});
+
+// Get all posts
+app.get('/posts', (req, res) => {
+  const posts = readPosts();
+  res.json(posts);
+});
