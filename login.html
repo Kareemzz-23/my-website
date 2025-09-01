@@ -36,7 +36,7 @@ const res = await fetch('https://fantastic-space-fishstick-r467wxg7qgjpcw5vx-300
     localStorage.setItem('alias', data.user.alias);
     localStorage.setItem('profilePic', data.user.profilePic);
     // Redirect to feed
-    window.location.href = 'feed.html';
+    window.location.href = 'trashblog.html';
   } else {
     document.getElementById('loginResult').innerHTML = `<p style="color:red;">${data.message}</p>`;
   }
