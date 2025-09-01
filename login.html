@@ -25,10 +25,11 @@
   e.preventDefault();
   const email = document.getElementById('email').value;
   const psw = document.getElementById('psw').value;
-  const res = await fetch('https://fantastic-space-fishstick-r467wxg7qgjpcw5vx-3000.app.github.dev/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, psw })
+const res = await fetch('https://fantastic-space-fishstick-r467wxg7qgjpcw5vx-3000.app.github.dev/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email, psw })
+});
   });
   const data = await res.json();
   if (res.ok) {
