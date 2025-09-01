@@ -6,7 +6,12 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://kareemzz-23.github.io',
+    'http://localhost:3000'
+  ]
+}));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
