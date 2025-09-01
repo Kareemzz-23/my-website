@@ -30,7 +30,6 @@ const res = await fetch('https://fantastic-space-fishstick-r467wxg7qgjpcw5vx-300
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ email, psw })
 });
-  });
   const data = await res.json();
   if (res.ok) {
     // Optionally store user info for later use
