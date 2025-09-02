@@ -21,15 +21,7 @@
   </form>
   <div id="loginResult"></div>
   <script>
-    const headers = {'Content-Type':'application/json',
-                    'Access-Control-Allow-Origin':'*',
-                    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'}
-const response = {
-    statusCode: 200,
-    headers:headers,
-    body: JSON.stringify(X),
-};
-return response;
+    
 const cors = require('cors'); app.use(cors());
 
    document.getElementById('loginForm').onsubmit = async function(e) {
