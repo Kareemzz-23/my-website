@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "body": "^5.1.0",
+    "body-parse": "^0.1.0",
+    "cors": "^2.8.5",
+    "parser": "^0.1.4"
+  }
+}

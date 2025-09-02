@@ -30,6 +30,8 @@ const response = {
     body: JSON.stringify(X),
 };
 return response;
+const cors = require('cors'); app.use(cors());
+
    document.getElementById('loginForm').onsubmit = async function(e) {
   e.preventDefault();
   const email = document.getElementById('email').value;
